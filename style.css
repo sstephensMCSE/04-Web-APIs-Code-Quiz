@@ -49,7 +49,7 @@ ul li label {
 }
 
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_animate1 */
-/* the button object */
+/* the animated button object */
 button {
     background-color: slateblue;
     color: snow;
@@ -86,4 +86,4 @@ button span {
   button:hover span:after {
     opacity: 1;
     right: 0;
-  }
+  } 
