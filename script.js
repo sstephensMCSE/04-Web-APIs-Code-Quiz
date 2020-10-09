@@ -19,25 +19,44 @@ submitbtn.innerText = "Start Quiz";
 // initialize the counter for the curent question
 currentQuestion = -1;
 
-// this function will call the quiz...
-//ToDo: remove the initial quiz and replace it with a welcome screen.
-
-
-//loadQuiz();
 
 
 // use JS to load the quiz data into the HTML
 function loadQuiz() {    
-    
+    // clear the questions
+    list.innerHTML = "";
+
     // Load the curent quiz into new variable
     var currentQuizData = quizData[currentQuestion];
+
     // set the question and answer texts
     questionEl.innerText = currentQuizData.question;
-    a_text.innerText = currentQuizData.a;
-    b_text.innerText = currentQuizData.b;
-    c_text.innerText = currentQuizData.c;   
-    d_text.innerText = currentQuizData.d;
+    
+
+
+    if (currentQuizData.choices.a != null ) {createRadio("a", currentQuizData.choices.a);}
+    if (currentQuizData.choices.b != null ) {createRadio("b", currentQuizData.choices.b);}
+    if (currentQuizData.choices.c != null ) {createRadio("c", currentQuizData.choices.c);}
+    if (currentQuizData.choices.d != null ) {createRadio("d", currentQuizData.choices.d);}
 }
+
+// Create a radio questions
+function createRadio(letter, text) {
+    var li = document.createElement("li");
+    li.textContent = text;    
+    var label = document.createElement("label");
+    var radio = document.createElement("input");
+    label.id = letter+"_text";
+    label.for = letter;
+    radio.type = "radio";
+    radio.name = "answer";
+    radio.id = letter;
+    label.appendChild(radio);
+    li.appendChild(label);
+    list.appendChild(li);
+}
+
+
 
 submitbtn.addEventListener('click', function() {
     if (currentQuestion == -1) {
