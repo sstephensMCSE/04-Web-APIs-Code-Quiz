@@ -1,35 +1,4 @@
-// Initialize quiz data as constant since it will be global unchanging
-const quizData = [
-    {
-        question: 'question 1?',
-        answer: 'a',
-        a: 'a',
-        b: 'b',
-        c: 'c',
-        d: 'd',        
-    },    {
-        question: 'question 2?',
-        answer: 'b',
-        a: 'a',
-        b: 'b',
-        c: 'c',
-        d: 'd',        
-    },    {
-        question: 'question 3?',
-        answer: 'c',
-        a: 'a',
-        b: 'b',
-        c: 'c',
-        d: 'd',        
-    },    {
-        question: 'question 4?',
-        answer: 'd',
-        a: 'a',
-        b: 'b',
-        c: 'c',
-        d: 'd',        
-    }
-];
+
 
 var questionEl = document.getElementById('question');
 var a_text = document.getElementById('a_text');
@@ -43,9 +12,8 @@ var paragraph = document.getElementById('paragraph')
 // hide the quiz list
 list.style.display = "none";
 questionEl.innerText = "Welcome to the quiz!";
-submitbtn.innerText = "Proceed";
-paragraph.innerText = "This is the instructions";
-
+paragraph.innerText = "Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your scoretime by ten seconds";
+submitbtn.innerText = "Start Quiz";
 
 
 // initialize the counter for the curent question
@@ -109,3 +77,8 @@ function detectAnswer(){
     else if (document.getElementById('d').checked) {return "d"}
     else return "na"
 };
+
+
+
+
+
