@@ -3,30 +3,30 @@
 The objective of this assignment is to demonstrate the capabilities of Javascript to interact with the web browser API's. This makes the webpage interactive by using actions to modify the HTML code. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
 ## User Story
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+AS A coding bootcamp student i want to take a timed quiz on JavaScript fundamentals that stores high scores
 
-Acceptance Criteria
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-The following animation demonstrates the application functionality:
+The project contains:
+*Multiple Timers
+*Multiple Arrays
+*Javascript powered dynamic content
+*Multiple types of Hyperlinks
+*Modal
+*Error checking
+*Local Storage
+*Unique CSS Style without Bootstrap
 
-## The URL of the functional, deployed application.
+
+## The URL of the functional, deployed application
 https://sstephensmcse.github.io/04-Web-APIs-Code-Quiz/
 
-## The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+## The URL of the GitHub repository
 https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz
 
 ## Screenshots
 
-[img]/assets/highscoremodal.jpg
+<img src="https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz/blob/main/assets/welcome.jpg" width="500" title="Welcome">
+<img src="https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz/blob/main/assets/variable%20questions.jpg" width="500" title="Questions">
+<img src="https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz/blob/main/assets/SubmitScore.jpg" width="500" title="Submit Score">
+<img src="https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz/blob/main/assets/highscoremodal.jpg" width="500" title="HighScore">
+<img src="https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz/blob/main/assets/local%20storage.jpg" width="500" title="Storage">
+
