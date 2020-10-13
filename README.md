@@ -21,19 +21,12 @@ WHEN the game is over
 THEN I can save my initials and score
 The following animation demonstrates the application functionality:
 
-
-## Review
-You are required to submit the following for review:
-
-
 ## The URL of the functional, deployed application.
-
+https://sstephensmcse.github.io/04-Web-APIs-Code-Quiz/
 
 ## The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+https://github.com/sstephensMCSE/04-Web-APIs-Code-Quiz
 
 ## Screenshots
 
-## Personal Bonus Challenges
-Add option to change the page style from light to dark.
-Use javascript to create a emoji that reacts to how well the user is doing.
-Add timer to track the fastest time.
+[img]/assets/highscoremodal.jpg
