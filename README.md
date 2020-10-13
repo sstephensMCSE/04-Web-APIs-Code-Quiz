@@ -6,15 +6,17 @@ The objective of this assignment is to demonstrate the capabilities of Javascrip
 AS A coding bootcamp student i want to take a timed quiz on JavaScript fundamentals that stores high scores
 
 The project contains:
-*Multiple Timers
-*Multiple Arrays
-*Javascript powered dynamic content
-*Multiple types of Hyperlinks
-*Modal
-*Error checking
-*Local Storage
-*Unique CSS Style without Bootstrap
-
+* Multiple Timers
+* Multiple Arrays
+* Javascript powered dynamic content
+* Multiple types of Hyperlinks
+* Modal
+* Error checking
+* Local Storage
+* Unique CSS Style without Bootstrap
+* Loops
+* Functions
+* Global and local scope variables
 
 ## The URL of the functional, deployed application
 https://sstephensmcse.github.io/04-Web-APIs-Code-Quiz/
