@@ -4,6 +4,15 @@
 * {
     box-sizing: border-box;
 }
+.highscores {
+    float: left;
+    margin-left: .5rem;
+}
+
+.timer {
+    float: right;
+    margin-right: .5rem;
+}
 
 /* center everything on the page */
 body {
@@ -16,6 +25,7 @@ body {
     min-height: 75vh;         
 }
 
+
 /* give the quiz a home */
 .quiz-container {
     background-color: snow;
@@ -23,11 +33,19 @@ body {
     box-shadow: 5px 10px 10px #888888;
     overflow: hidden;
     width: 650px;
+    height: 650px;
     max-width: 100%;
+    max-height: 100%;
+    position:relative;
 }
 
 .quiz-header {
     padding: 1.5rem 3rem;
+}
+
+.quiz-footer {
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 h2 {
@@ -61,30 +79,45 @@ button {
     font-size: 2rem;
     cursor: pointer;
     font-family: inherit;
+    position: absolute;
+    bottom:   0;
 }
 
-/* make button react to hover */
-button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-
-  button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
     top: 0;
-    right: -20px;
-    transition: 0.5s;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-
-  button:hover span {
-    padding-right: 25px;
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
   }
-
-  button:hover span:after {
-    opacity: 1;
-    right: 0;
-  } 
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

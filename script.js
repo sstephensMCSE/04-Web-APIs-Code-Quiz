@@ -9,11 +9,12 @@ var paragraph = document.getElementById('paragraph');
 var result = document.getElementById('result');
 var quizLength = 5;
 var myHR = document.getElementById("myHR");
-
+var totalScore = 0;
 
 
 // hide the quiz list
 myHR.style.display = "none";
+result.innerText = "";
 list.style.display = "none";
 questionEl.innerText = "Welcome to the quiz!";
 paragraph.innerText = "Try to answer 5 random code-related questions within the time limit. Each correct answer is worth 10 points. Keep in mind that the incorrect answers will penalize your scoretime by ten seconds";
@@ -84,36 +85,32 @@ submitbtn.addEventListener('click', function() {
 
             // was it right or wrong? add a point and set the resulttext.
 
-            if (answer == currentQuizData.answer) { var resulttext = "Result - Correct!" }
-            else { var resulttext = "Result - Incorrect." } ;            
-
-            // 3 sec loop to show the result
-            myHR.style.display = "";
+            if (answer == currentQuizData.answer) { var resulttext = "Correct!"; totalScore += 1 }
+            else { var resulttext = "Incorrect." } ;            
+            
+            
+            // 3 sec loop to show the result            
+            myHR.style.display = "";            
             result.innerText = resulttext;
 
             var timeleft = 4;
             var Timer = setInterval( function() {
                 timeleft--;
                 result.innerText = resulttext +" - " + timeleft;
-                if(timeleft <= 0) {
-                    result.innerText = "";            
+                if(timeleft <= 0) {                    
+                    result.innerText = "";                          
                     myHR.style.display = "none";
                     clearInterval(Timer);
                 }
             }, 1000);
-
-
-            // Green box around correct answer.
-
-            // 3 sec pause before next question.
             
-            // say right or wrong and show the timer.
-            
+
             currentQuestion++
             document.getElementById(answer).checked = false;
             if (currentQuestion <= quizLength) {
                 loadQuiz();
             } else {
+
                 // todo: all done
                 // hide the list
                 // your final score was score
@@ -134,3 +131,29 @@ function detectAnswer(){
     else return "na"    
 };
 
+// Modal
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("highscores");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
