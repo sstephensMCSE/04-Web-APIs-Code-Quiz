@@ -17,7 +17,9 @@ var timeleft = 100;
 var quizLength = 5;
 
 
-var highscores=[]
+var highscores=[];
+var storedHighscores = JSON.parse(localStorage.getItem("storedHighscores"));
+if (storedHighscores !== null) {highscores = storedHighscores };
 
 // hide the quiz list
 myHR.style.display = "none";
@@ -180,7 +182,9 @@ submitbtn.addEventListener('click', function() {
                     var player = document.getElementById("initials").value
                     // push the score 
                     highscores.push(player + " - " + lastScore);
-                    alert("score submitted")
+                        // Add code here to stringify the todos array and save it to the "todos" key in localStorage
+                        localStorage.setItem("storedHighscores", JSON.stringify(highscores));
+                    alert("Score saved to local storage")
                 }
             }
         }
