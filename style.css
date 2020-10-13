@@ -67,8 +67,7 @@ ul li label {
     cursor: pointer;
 }
 
-/* https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_animate1 */
-/* the animated button object */
+
 button {
     background-color: slateblue;
     color: snow;
@@ -83,7 +82,7 @@ button {
     bottom:   0;
 }
 
-/* The Modal (background) */
+/* FROM WC3 website - The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

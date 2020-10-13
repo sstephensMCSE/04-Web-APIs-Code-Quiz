@@ -10,12 +10,14 @@ var result = document.getElementById('result');
 var timerdiv = document.getElementById('timerdiv');
 var myHR = document.getElementById("myHR");
 var footer = document.getElementById("footer");
+var modaltext = document.getElementById('modaltext');
 
 var totalScore = 0;
 var timeleft = 100;
-var quizLength = 1;
+var quizLength = 5;
 
-highscores=[ "SMS 5", "AJC 4", "TOM 2"]
+
+var highscores=[]
 
 // hide the quiz list
 myHR.style.display = "none";
@@ -110,7 +112,7 @@ submitbtn.addEventListener('click', function() {
             else { var resulttext = "Incorrect." ; quiztimeleft -= 10 } ;            
             
             
-            // 3 sec loop to show the result            
+            // 3 sec loop to show the result from the last question        
             myHR.style.display = "";            
             result.innerText = resulttext;
 
@@ -125,12 +127,13 @@ submitbtn.addEventListener('click', function() {
                 }
             }, 1000);
             
-
             currentQuestion++
             document.getElementById(answer).checked = false;
             if (currentQuestion <= quizLength) {
                 loadQuiz();
             } else {
+                
+                // End of the Quiz
 
                 // stop all timers.
                 result.innerText = "Enter Initials";
@@ -147,11 +150,11 @@ submitbtn.addEventListener('click', function() {
                 submitbtn.innerText = "Try Again";
                 
                 // reset the quiz 
+                var lastScore = totalScore;
                 totalScore = 0;
                 timeleft = 100;
                 currentQuestion = 0;
-                
-                
+                                
                 // enter initials            
                 var label = document.createElement("label");
                 label.for = "initials";
@@ -162,17 +165,28 @@ submitbtn.addEventListener('click', function() {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", "initials");
                 footer.appendChild(x);
-                // Submit 
+                // Submit button
                 var y = document.createElement("INPUT");
                 y.id = "submitHS";
                 y.setAttribute("type", "submit");
                 footer.appendChild(y);
                                 
+
+                // Submit the score 
+                var submit = document.getElementById("submitHS");
+                // When the user clicks the button, add the score.
+                submit.onclick = function() {
+                    // get initials
+                    var player = document.getElementById("initials").value
+                    // push the score 
+                    highscores.push(player + " - " + lastScore);
+                    alert("score submitted")
+                }
             }
         }
     }
 })
-
+// what answer was selected?
 function detectAnswer(){
     if (document.getElementById('a').checked) {return "a"}
     else if (document.getElementById('b').checked) {return "b"}
@@ -193,28 +207,23 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 modalbtn.onclick = function() {
-  modal.style.display = "block";
+    modaltext.innerHTML = ""
+    // post the highscores
+    var i;
+    for (i = 0; i < highscores.length; i++) {        
+        modaltext.innerHTML += "<br> "+highscores[i]; 
+    }
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == modal) {  
+        modal.style.display = "none";
   }
-}
-
-
-// Submit the score 
-
-// Get the button that opens the modal
-var submit = document.getElementById("submitHS");
-
-// When the user clicks the button, open the modal 
-submit.onclick = function() {
-  alert("score submitted")
 }
