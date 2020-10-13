@@ -94,9 +94,7 @@ submitbtn.addEventListener('click', function() {
                 clearInterval(quizTimer);
             }
         }, 1000);
-
-
-
+        // Load a new quiz
         loadQuiz();
     } else {
         // get the radio values
@@ -107,8 +105,6 @@ submitbtn.addEventListener('click', function() {
             alert("Please select one answer")
         } else {
           
-            // Todo: slice the answer from the array so we dont get a repeat!
-
             // was it right or wrong? add a point and set the resulttext.
             if (answer == currentQuizData.answer) { var resulttext = "Correct!"; totalScore += 1 }
             else { var resulttext = "Incorrect." ; quiztimeleft -= 10 } ;            
@@ -119,13 +115,13 @@ submitbtn.addEventListener('click', function() {
             result.innerText = resulttext;
 
             var timeleft = 4;
-            var Timer = setInterval( function() {
+            var timer = setInterval( function() {
                 timeleft--;
                 result.innerText = resulttext;
                 if(timeleft <= 0) {                    
                     result.innerText = "";                          
                     myHR.style.display = "none";
-                    clearInterval(Timer);
+                    clearInterval(timer);
                 }
             }, 1000);
             
@@ -138,17 +134,15 @@ submitbtn.addEventListener('click', function() {
                 // End of the Quiz
 
                 // stop all timers.
-                result.innerText = "Enter Initials";
                 myHR.style.display = "none";              
-                clearInterval(Timer);                
+                clearInterval(timer);          
                 timerdiv.innerText = "Quiz Timer: 0";
                 clearInterval(quizTimer);
                 
-                // clear the multiple choice buttons
-                list.innerHTML = "";
+                // set the text
 
                 questionEl.innerText = "All Done!";
-                paragraph.innerText = "Your Final Score was: "+totalScore;
+                list.innerHTML = "Your Final Score was: "+totalScore;
                 submitbtn.innerText = "Try Again";
                 
                 // reset the quiz 
