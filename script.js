@@ -7,10 +7,15 @@ var submitbtn = document.getElementById('submit');
 var list = document.getElementById('list');
 var paragraph = document.getElementById('paragraph');
 var result = document.getElementById('result');
-var quizLength = 5;
+var timerdiv = document.getElementById('timerdiv');
 var myHR = document.getElementById("myHR");
-var totalScore = 0;
+var footer = document.getElementById("footer");
 
+var totalScore = 0;
+var timeleft = 100;
+var quizLength = 1;
+
+highscores=[ "SMS 5", "AJC 4", "TOM 2"]
 
 // hide the quiz list
 myHR.style.display = "none";
@@ -19,6 +24,7 @@ list.style.display = "none";
 questionEl.innerText = "Welcome to the quiz!";
 paragraph.innerText = "Try to answer 5 random code-related questions within the time limit. Each correct answer is worth 10 points. Keep in mind that the incorrect answers will penalize your scoretime by ten seconds";
 submitbtn.innerText = "Start Quiz";
+timerdiv.innerText = "Quiz Timer: "+ timeleft;
 
 // initialize the counter for the curent question
 currentQuestion = 0;
@@ -68,10 +74,25 @@ function createRadio(letter, text) {
 
 submitbtn.addEventListener('click', function() {
     if (currentQuestion == 0) {
+        footer.innerHTML = "";
         submitbtn.innerText = "Submit";
         list.style.display = "";
         paragraph.innerText = "";
         currentQuestion++
+
+        //start quiz timer
+        quiztimeleft = 100;
+        quizTimer = setInterval( function() {
+            quiztimeleft--;
+            timerdiv.innerText = "Quiz Timer: "+ quiztimeleft;
+            if(quiztimeleft <= 0) {                    
+                timerdiv.innerText = "Quiz Timer: 0";
+                clearInterval(quizTimer);
+            }
+        }, 1000);
+
+
+
         loadQuiz();
     } else {
         // get the radio values
@@ -81,12 +102,12 @@ submitbtn.addEventListener('click', function() {
         if (answer == "na") {
             alert("Please select one answer")
         } else {
+          
             // Todo: slice the answer from the array so we dont get a repeat!
 
             // was it right or wrong? add a point and set the resulttext.
-
             if (answer == currentQuizData.answer) { var resulttext = "Correct!"; totalScore += 1 }
-            else { var resulttext = "Incorrect." } ;            
+            else { var resulttext = "Incorrect." ; quiztimeleft -= 10 } ;            
             
             
             // 3 sec loop to show the result            
@@ -96,7 +117,7 @@ submitbtn.addEventListener('click', function() {
             var timeleft = 4;
             var Timer = setInterval( function() {
                 timeleft--;
-                result.innerText = resulttext +" - " + timeleft;
+                result.innerText = resulttext;
                 if(timeleft <= 0) {                    
                     result.innerText = "";                          
                     myHR.style.display = "none";
@@ -111,13 +132,42 @@ submitbtn.addEventListener('click', function() {
                 loadQuiz();
             } else {
 
-                // todo: all done
-                // hide the list
-                // your final score was score
-                // enter initials
-                // submit
-                // show leaderboard
-                alert("end")
+                // stop all timers.
+                result.innerText = "Enter Initials";
+                myHR.style.display = "none";              
+                clearInterval(Timer);                
+                timerdiv.innerText = "Quiz Timer: 0";
+                clearInterval(quizTimer);
+                
+                // clear the multiple choice buttons
+                list.innerHTML = "";
+
+                questionEl.innerText = "All Done!";
+                paragraph.innerText = "Your Final Score was: "+totalScore;
+                submitbtn.innerText = "Try Again";
+                
+                // reset the quiz 
+                totalScore = 0;
+                timeleft = 100;
+                currentQuestion = 0;
+                
+                
+                // enter initials            
+                var label = document.createElement("label");
+                label.for = "initials";
+                label.textContent = "Initials: ";
+                footer.appendChild(label);
+                // Text box
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", "initials");
+                footer.appendChild(x);
+                // Submit 
+                var y = document.createElement("INPUT");
+                y.id = "submitHS";
+                y.setAttribute("type", "submit");
+                footer.appendChild(y);
+                                
             }
         }
     }
@@ -136,13 +186,13 @@ function detectAnswer(){
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("highscores");
+var modalbtn = document.getElementById("highscores");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+modalbtn.onclick = function() {
   modal.style.display = "block";
 }
 
@@ -156,4 +206,15 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+
+// Submit the score 
+
+// Get the button that opens the modal
+var submit = document.getElementById("submitHS");
+
+// When the user clicks the button, open the modal 
+submit.onclick = function() {
+  alert("score submitted")
 }
